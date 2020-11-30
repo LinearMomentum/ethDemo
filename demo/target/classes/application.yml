@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    username: postgres
+    password: 123123
+    url: jdbc:postgresql://localhost:5432/postgres
+    driver-class-name: org.postgresql.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+    initalSize: 5
