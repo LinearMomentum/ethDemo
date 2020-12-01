@@ -15,6 +15,7 @@ create table students(
                          score integer default 0,
                          universityAndMajor integer
 
+
 );
 
 create table university(
