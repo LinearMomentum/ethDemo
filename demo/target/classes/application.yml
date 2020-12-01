@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: transaction-service
   datasource:
     username: postgres
     password: 123123
@@ -7,3 +9,9 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
 
     initalSize: 5
+
+server:
+  port: ${PORT:8090}
+web3j:
+  #  client-address: http://10.20.36.229:8545
+  client-address: http://127.0.0.1:7545
