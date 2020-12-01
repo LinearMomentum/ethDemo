@@ -18,8 +18,8 @@ public class StudentController {
     @Autowired
     StudentMapper studentMapper;
 
-    @GetMapping("/student/{ethaccount}")
-    public Student getStudent(@PathVariable("ethaccount") String ethaccount){
+    @GetMapping("/student")
+    public Student getStudent(@RequestParam String ethaccount){
         return studentMapper.getStudentByAccount(ethaccount);
 
     }
