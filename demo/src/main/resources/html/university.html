@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>University</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js" type="text/javascript" charset="UTF-8"></script>
+</head>
+<body style="margin:100px;">
+<form id="major" style="background-color: lightgreen;margin: 20px;padding: 20px">
+    <div><h2>Major Management</h2>
+        <li v-for="(major,index) in majors">
+            {{ major.name }} <button type="button" v-on:click='majors.splice(index, 1)'>delete</button>
+        </li>
+        <label>
+            Set a new major: <input type="text" v-model="newMajor"/>.
+            <input type="button" v-on:click="majors.push({name:newMajor})" value="add"/>
+        </label><br/>
+    </div>
+</form>
+<form id="matriculation" style="background-color: #ffd5c4;margin: 20px;padding: 20px">
+    <table class="table">
+        <caption style="font-size: 15px; text-align: left">
+            <h2>Student List</h2>
+        </caption>
+        <tr>
+            <th style="width: 50px">Name</th>
+            <th style="width: 110px">ID code</th>
+            <th style="width: 100px">Chinese Score</th>
+            <th style="width: 80px">Math Score</th>
+            <th style="width: 100px">English Score</th>
+            <th style="width: 120px">Integration Score</th>
+            <th style="width: 80px">Total Score</th>
+            <th style="width: 100px">Major</th>
+            <th style="width: 30px">State</th>
+            <th style="width: 100px">Option</th>
+        </tr>
+        <tbody>
+        <tr v-for="student in students">
+            <td>{{student.name}}</td>
+            <td>{{student.id}}</td>
+            <td>{{student.scores.chinese}}</td>
+            <td>{{student.scores.math}}</td>
+            <td>{{student.scores.english}}</td>
+            <td>{{student.scores.integration}}</td>
+            <td>{{student.scores.chinese+student.scores.math+student.scores.english+student.scores.integration}}</td>
+            <td>{{student.major}}</td>
+            <td v-bind:class="{gray:student.state==='TBD',red:student.state==='Rejected',green:student.state==='Accepted'}">{{student.state}}</td>
+            <td>
+                <input class="button2" type="button" value="Matriculate" v-on:click="student.state='Accepted'"/>
+                <input class="button2" type="button" value="Reject" v-on:click="student.state='Rejected'"/>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <input class="button2" type="submit" value="Submit" v-on:click="submit">
+</form>
+<script>
+    //set luqu number
+let major=new Vue({
+    el:'#major',
+    data:{
+        newMajor:"",
+        majors:[
+            {name: "physics"},
+            {name: "mathematics"},
+            {name: "chemistry"},
+            {name: "biology"},
+            {name: "computer science"}
+        ]
+    }
+});
+let matriculation=new Vue({
+    el:'#matriculation',
+    data:{
+       students:[
+           {name:"Li Hua", major:"computer science", state:"TBD", id:"000000000000000000",
+               scores: {
+                   chinese:150,
+                   math:150,
+                   english:150,
+                   integration:300
+               }},
+           {name:"Li Lei", major:"physics", state:"TBD", id:"111111111111111111",
+               scores: {
+                   chinese:0,
+                   math:0,
+                   english:0,
+                   integration:0
+               }}
+       ]
+    }, 
+    methods:{
+        submit:function () {
+            if(confirm("Sure to submit matriculation list?")===true){
+                for(let i=0;i< this.students.length;i++){
+                    if(this.students[i].state==='TBD'){
+                        alert("Undisposed student exist!")
+                    }
+                }
+            }
+        }
+    }
+});
+</script>
+<style>
+    table.table {
+        font-family: verdana,arial,sans-serif;
+        font-size:11px;
+        color:#333333;
+        border-width: 1px;
+        border-color: darkorange;
+        border-collapse: collapse;
+    //margin: 0 auto;
+    }
+    table.table th {
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: darkorange;
+        background-color: orange;
+    }
+    table.table td {
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: darkorange;
+    }
+    .table tr:nth-child(odd){
+        background-color: #fab89f;
+    }
+    .table tr:nth-child(even){
+        background-color: #fadcd0;
+    }
+    .gray{
+        color: gray;
+    }
+    .red{
+        color: red;
+    }
+    .green{
+        color: green;
+    }
+    .button2{
+        background-color: lightsalmon;
+        color: black;
+        font-weight: 400;
+        font-size: .86em;
+        border-radius: .3rem;
+        width: 100px;
+        height: 30px;
+        margin: 5px;
+    }
+</style>
+</body>
+</html>

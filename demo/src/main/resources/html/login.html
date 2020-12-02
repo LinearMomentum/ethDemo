@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js" type="text/javascript" charset="UTF-8"></script>
+</head>
+<body style="margin:100px">
+<form class="form" name="login_form" id="login_form" method="post">
+    <h3 style="text-align: center;margin: 1px">Please login the system</h3>
+    ID number:<br/>
+    <label style="text-align: center">
+        <input class="input" v-on:click="idEdit=1" v-model="ID" placeholder="ID number"/>
+    </label>
+    <span v-if="!ID&&idEdit" style="color: red"><br/>ID number shouldn't be none!</span>
+    <br/>password:<br/>
+    <label style="text-align: center">
+        <input class="input" type="password" v-on:click="passwordEdit=1" v-model="password" placeholder="password"/>
+    </label>
+    <span v-if="!password&&passwordEdit" style="color: red"><br/>password shouldn't be none!</span>
+    <br/>
+    <a style="margin: auto 0" href="register.html">Register and set password</a>
+    <input v-bind:disabled="!submitAble" v-bind:class="{ableButton:submitAble,disabledButton:!submitAble}" type="submit" value="login">
+    <span style="color: red; display: none;margin: 0"><br/>the username or password is wrong</span>
+</form>
+<script type="text/javascript">
+    new Vue({
+        el:"#login_form",
+        data:{
+            ID:"",
+            password:"",
+            idEdit:0,
+            passwordEdit:0
+        },
+        computed:{
+            submitAble: function (){
+                return this.password&&this.username;
+            }
+        }
+    });
+</script>
+<style>
+    .form{
+        line-height: 40px;
+        width: 400px;
+        height: auto;
+        background-color: ghostwhite;
+        font-size: 15px;
+        //margin: 40px auto 0;
+        padding: 20px;
+        border: 2px solid black;
+    }
+    .ableButton{
+        background-color: #007bff;
+        color: #fff;
+        font-weight: 400;
+        font-size: .86em;
+        border-radius: .3rem;
+        width: 320px;
+        height: 3em;
+        margin-bottom: 1.2em;
+        margin-left: 40px;
+        margin-right: 1em;
+    }
+    .disabledButton{
+         background-color: #adcdef;
+         color: #fff;
+         font-weight: 400;
+         font-size: .86em;
+         border-radius: .3rem;
+         width: 320px;
+         height: 3em;
+         margin-bottom: 1.2em;
+         margin-left: 40px;
+         margin-right: 1em;
+     }
+    .input{
+        width: 360px;
+        height: 3em;
+        margin: 0;
+    }
+</style>
+</body>
+</html>
