@@ -24,10 +24,12 @@ public class StudentController {
 
     }
     @GetMapping("/student/insert")
-    public void insertStudent(Student student) throws NoSuchAlgorithmException {
-        String s=student.getPassword();
+    public String insertStudent(Student student) throws NoSuchAlgorithmException {
+        int i=(int)(Math.random()*100000);
+        String s=Encryption.encryptPassword(String.valueOf(i)).substring(0,12);
         student.setPassword(Encryption.encryptPassword(s));
         studentMapper.inserStudent(student);
+        return s;
     }
     @GetMapping("/student/update")
     public void updatePassword(Student student){
