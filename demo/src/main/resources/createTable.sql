@@ -1,19 +1,19 @@
 create table students(
                          id serial primary key ,
                          name varchar(32),
-                         idCard varchar(32),
-                         ethAccount varchar(64),
-                         ethPassword varchar(64),
-                         undergraduate1 varchar(64),
-                         undergraduate2 varchar(64),
-                         undergraduate3 varchar(64),
-                         undergraduate4 varchar(64),
-                         undergraduate5 varchar(64),
-                         undergraduate6 varchar(64),
-                         systemAccount varchar(64),
-                         systemPassword varchar(64),
+                         idcard varchar(32),
+                         ethaccount varchar(64),
+                         undergraduate1 integer,
+                         undergraduate2 integer,
+                         undergraduate3 integer,
+                         undergraduate4 integer,
+                         undergraduate5 integer,
+                         undergraduate6 integer,
+                         systemaccount varchar(64),
+                         systempassword varchar(64),
                          score integer default 0,
-                         universityAndMajor integer
+                         ethpassword varchar(64),
+                         universityandmajor integer
 
 
 );
@@ -21,12 +21,12 @@ create table students(
 create table university(
 
                            id serial primary key ,
-                           systemAccount varchar(64),
-                           systemPassword varchar(64),
                            name varchar(32),
-                           idCode varchar(32),
-                           ethAccount varchar(64),
-                           ethPassword varchar(64)
+                           idcode varchar(32),
+                           ethaccount varchar(64),
+                           ethpassword varchar(64),
+                           systemaccount varchar(64),
+                           systempassword varchar(64)
 
 
 );
@@ -41,9 +41,9 @@ create table major(
 
 create table university_major(
                                  id serial primary key ,
-                                 universityId integer,
-                                 majorId integer,
-                                 studentNum integer,
+                                 universityid integer,
+                                 majorid integer,
+                                 studentnum integer,
                                  score integer
 
 
@@ -53,10 +53,10 @@ create table university_major(
 
 create table examInstitute(
                               id serial primary key,
-                              systemAccount varchar(64),
-                              systemPassword varchar(64),
-                              ethAccount varchar(64),
-                              ethPassword varchar(64)
+                              ethaccount varchar(64),
+                              systemaccount varchar(64),
+                              systempassword varchar(64),
+                              ethpassword varchar(64)
 )
 ;
 create table admitted(

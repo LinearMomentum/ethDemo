@@ -6,6 +6,7 @@ import com.example.demo.web.tables.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.security.NoSuchAlgorithmException;
@@ -17,19 +18,28 @@ public class StudentController {
     @Autowired
     StudentMapper studentMapper;
 
-    @GetMapping("/student/{ethaccount}")
-    public Student getStudent(@PathVariable("ethaccount") String ethaccount){
-        return studentMapper.getStudentByAccount(ethaccount);
+    @GetMapping("/student")
+    public Student getStudent(@RequestParam String idcard){
+        return studentMapper.getStudentByIdCard(idcard);
+
     }
     @GetMapping("/student/insert")
-    public Student insertStudent(Student student) throws NoSuchAlgorithmException {
-        String s=student.getPassword();
+    public String insertStudent(Student student) throws NoSuchAlgorithmException {
+        int i=(int)(Math.random()*100000);
+        String s=Encryption.encryptPassword(String.valueOf(i)).substring(0,12);
         student.setPassword(Encryption.encryptPassword(s));
-        return studentMapper.inserStudent(student);
+        studentMapper.inserStudent(student);
+        return s;
     }
     @GetMapping("/student/update")
-    public Student updatePassword(Student student){
-        return studentMapper.updatePassword(student);
+    public void updatePassword(Student student){
+        studentMapper.updatePassword(student);
+    }
+    @GetMapping("/student/login")
+    public boolean login(@RequestParam String idcard,@RequestParam String password) throws NoSuchAlgorithmException {
+        password=Encryption.encryptPassword(password);
+        System.out.println(studentMapper.login(idcard).getPassword().equals(password));
+        return studentMapper.login(idcard).getPassword().equals(password);
     }
 
 }

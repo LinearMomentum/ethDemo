@@ -19,10 +19,5 @@ public class UniversityController {
         universityMapper.insertUniversity(university);
         return university;
     }
-    @GetMapping("/university/update")
-    public University updateUniversity(University university,int number){
-        universityMapper.updateUniversity(university,number);
-        return university;
-    }
 
 }

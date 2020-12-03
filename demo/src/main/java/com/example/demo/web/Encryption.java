@@ -15,6 +15,7 @@ public class Encryption {
                 tmp = "0" + tmp;
             result.append(tmp);
         }
+
         return result.toString();
     }
 }

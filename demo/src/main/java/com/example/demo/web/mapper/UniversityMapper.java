@@ -10,6 +10,4 @@ public interface UniversityMapper {
 
     @Insert("insert into university(name,idcode,ethaccount,quota) values (#{name},#{idcode},#{ethaccount},#{quota})")
     public University insertUniversity(University university);
-    @Update("update university set quota = (select quota from university where id=#{id})-#{number} where id=#{id}")
-    public University updateUniversity(University university,int number);
 }
