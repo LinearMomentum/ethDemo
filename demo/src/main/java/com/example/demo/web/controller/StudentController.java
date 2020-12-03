@@ -19,8 +19,8 @@ public class StudentController {
     StudentMapper studentMapper;
 
     @GetMapping("/student")
-    public Student getStudent(@RequestParam String ethaccount){
-        return studentMapper.getStudentByAccount(ethaccount);
+    public Student getStudent(@RequestParam String idcard){
+        return studentMapper.getStudentByIdCard(idcard);
 
     }
     @GetMapping("/student/insert")
