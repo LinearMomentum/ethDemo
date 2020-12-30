@@ -1,16 +1,10 @@
 package com.example.demo.web.controller;
 
-import com.example.demo.web.contract.Matriculate;
 import com.example.demo.web.model.BlockchainTransaction;
 import com.example.demo.web.service.BlockchainService;
 import com.example.demo.web.service.TransactionServeice;
-import com.example.demo.web.util.CredentialsGen;
 import org.springframework.web.bind.annotation.*;
-import org.web3j.abi.datatypes.Address;
-import org.web3j.abi.datatypes.generated.Uint256;
-import org.web3j.crypto.Credentials;
 import org.web3j.tuples.generated.Tuple4;
-import org.web3j.tx.gas.StaticGasProvider;
 
 
 import java.math.BigInteger;
@@ -80,6 +74,7 @@ public class TransactionController {
 
     @PostMapping("/addMajor")
     public void addMajor(@RequestParam("id") long id, @RequestParam("uid") long uid, @RequestParam("mid") long mid, @RequestParam("num") long num, @RequestParam("score") long score) throws Exception {
+        System.out.println(id+""+uid);
         transactionServeice.addMajor(BigInteger.valueOf(id), BigInteger.valueOf(uid), BigInteger.valueOf(mid), BigInteger.valueOf(num), BigInteger.valueOf(score));
     }
 
@@ -99,9 +94,16 @@ public class TransactionController {
     }
 
     @PostMapping("/matriculatedMajor")
-    public long matriculatedMajor(String addr) throws Exception {
+    public long matriculatedMajor(@RequestParam("addr") String addr) throws Exception {
         return transactionServeice.matriculatedMajor(addr).longValue();
     }
+
+    @PostMapping("/setScoresContractAddress")
+    public void setScoresContractAddress(String addr) throws Exception {
+        transactionServeice.setScoresContractAddress(addr);
+    }
+
+
 
 
 

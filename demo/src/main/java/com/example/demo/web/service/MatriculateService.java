@@ -1,12 +1,8 @@
 package com.example.demo.web.service;
 
 import com.example.demo.web.contract.Matriculate;
-import com.example.demo.web.contract.Scores;
-import com.example.demo.web.contract.Scores_sol_Scores2;
 import com.example.demo.web.util.CredentialsGen;
 import org.springframework.stereotype.Service;
-import org.web3j.abi.datatypes.Address;
-import org.web3j.abi.datatypes.generated.Uint256;
 import org.web3j.crypto.Credentials;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.admin.Admin;

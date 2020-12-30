@@ -39,8 +39,8 @@ public class TransactionServeice {
     private final Web3j web3j;
     String contractAddress = "0x136612E549715CFC2583f80c995d06F6BACEa968";
 //    String contractAddress2 = "0x12180cF141b3B57B5c878D46cA531dEa27C6FBD5";
-    String scoresContractAddress = "0x0a436dc44515aca22ad016dc76cce5f34acfe331";
-    String matriculateContractAddress = "0x0a436dc44515aca22ad016dc76cce5f34acfe331";
+    String scoresContractAddress = "0x7bb75f83cc04fe0f86de7f725841c854631f49d7";
+    String matriculateContractAddress = "0x11b212cd9805ea4ed4a4d73584482c96f5294392";
 
 
 
@@ -175,6 +175,13 @@ public class TransactionServeice {
         matriculate.setContract(contractAddr).send();
     }
 
+    public void setScoresContractAddress() throws Exception {
+        Credentials credentials = CredentialsGen.getCredentialsFromPrivateKey();
+        Matriculate matriculate = Matriculate.load(this.matriculateContractAddress, web3j, credentials, new StaticGasProvider(BigInteger.valueOf(20000000000L),
+                BigInteger.valueOf(6721975L)));
+        matriculate.setContract(this.scoresContractAddress).send();
+    }
+
     public void matriculateDeploy() throws Exception {
         Credentials credentials = CredentialsGen.getCredentialsFromPrivateKey();
 
@@ -199,35 +206,35 @@ public class TransactionServeice {
 
     public void addMajor(BigInteger id, BigInteger uid, BigInteger mid, BigInteger num, BigInteger score) throws Exception {
         Credentials credentials = CredentialsGen.getCredentialsFromPrivateKey();
-        Matriculate matriculate = Matriculate.load(this.contractAddress,web3j, credentials, new StaticGasProvider(BigInteger.valueOf(20000000000L),
-                BigInteger.valueOf(6721975L)));
+        Matriculate matriculate = Matriculate.load(this.matriculateContractAddress,web3j, credentials,  BigInteger.valueOf(20000000000L),
+                BigInteger.valueOf(6721975L));
         matriculate.addMajor(id, uid, mid, num, score).send();
     }
 
     public Tuple4<BigInteger, BigInteger, BigInteger, BigInteger> queryMajor(BigInteger id) throws Exception {
         Credentials credentials = CredentialsGen.getCredentialsFromPrivateKey();
-        Matriculate matriculate = Matriculate.load(this.contractAddress,web3j, credentials, new StaticGasProvider(BigInteger.valueOf(20000000000L),
+        Matriculate matriculate = Matriculate.load(this.matriculateContractAddress,web3j, credentials, new StaticGasProvider(BigInteger.valueOf(20000000000L),
                 BigInteger.valueOf(6721975L)));
         return matriculate.queryMajor(id).send();
     }
 
     public void matriculate() throws Exception {
         Credentials credentials = CredentialsGen.getCredentialsFromPrivateKey();
-        Matriculate matriculate = Matriculate.load(this.contractAddress,web3j, credentials, new StaticGasProvider(BigInteger.valueOf(20000000000L),
+        Matriculate matriculate = Matriculate.load(this.matriculateContractAddress,web3j, credentials, new StaticGasProvider(BigInteger.valueOf(20000000000L),
                 BigInteger.valueOf(6721975L)));
         matriculate.matriculate().send();
     }
 
     public List matriculatedList(BigInteger id) throws Exception {
         Credentials credentials = CredentialsGen.getCredentialsFromPrivateKey();
-        Matriculate matriculate = Matriculate.load(this.contractAddress,web3j, credentials, new StaticGasProvider(BigInteger.valueOf(20000000000L),
+        Matriculate matriculate = Matriculate.load(this.matriculateContractAddress,web3j, credentials, new StaticGasProvider(BigInteger.valueOf(20000000000L),
                 BigInteger.valueOf(6721975L)));
         return matriculate.matriculatedList(id).send();
     }
 
     public BigInteger matriculatedMajor(String addr) throws Exception {
         Credentials credentials = CredentialsGen.getCredentialsFromPrivateKey();
-        Matriculate matriculate = Matriculate.load(this.contractAddress,web3j, credentials, new StaticGasProvider(BigInteger.valueOf(20000000000L),
+        Matriculate matriculate = Matriculate.load(this.matriculateContractAddress,web3j, credentials, new StaticGasProvider(BigInteger.valueOf(20000000000L),
                 BigInteger.valueOf(6721975L)));
         return matriculate.matriculatedMajor(addr).send();
     }
