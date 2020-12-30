@@ -4,10 +4,7 @@ import com.example.demo.web.Encryption;
 import com.example.demo.web.mapper.StudentMapper;
 import com.example.demo.web.tables.Student;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.NoSuchAlgorithmException;
 
@@ -21,6 +18,11 @@ public class StudentController {
     @GetMapping("/student")
     public Student getStudent(@RequestParam String idcard){
         return studentMapper.getStudentByIdCard(idcard);
+
+    }
+    @PostMapping("/student/save")
+    public void saveMajor(@RequestParam String idcard,@RequestParam String password){
+        //interface
 
     }
     @GetMapping("/student/insert")
