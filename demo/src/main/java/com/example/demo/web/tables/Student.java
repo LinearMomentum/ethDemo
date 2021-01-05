@@ -13,6 +13,7 @@ public class Student {
     private String undergraduate5;
     private String undergraduate6;
     private String password;
+    private String ethpassword;
 
     public String getEthpassword() {
         return ethpassword;
@@ -22,7 +23,7 @@ public class Student {
         this.ethpassword = ethpassword;
     }
 
-    private String ethpassword;
+
     public int getUniversityandmajor() {
         return universityandmajor;
     }
