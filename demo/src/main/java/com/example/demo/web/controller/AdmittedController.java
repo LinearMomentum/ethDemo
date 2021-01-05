@@ -22,7 +22,8 @@ public class AdmittedController {
     public void insertAdmitted(@RequestParam int universityandmajor,@RequestParam int id){
         admittedMapper.updateAdmitted(universityandmajor,id);
     }
-    public void admitted(){
+    @GetMapping("/admitted")
+    public List<university_major> admitted(){
         List<university_major> majors=admittedMapper.admitted();
         for(university_major major:majors){
             int studentNumber=major.getStudentnum();
@@ -32,13 +33,19 @@ public class AdmittedController {
             students.sort(Comparator.comparing(Student::getScore).reversed());
             if (students.size()<=major.getStudentnum()){
                 major.setStudentnum(studentNumber-students.size());
+                major.setScore(students.get(students.size()-1).getScore());
             }
             else {
                 major.setStudentnum(0);
                 for (int i = 0; i <studentNumber ; i++) {
                     admittedMapper.updateAdmitted(major.getId(),students.get(i).getId());
+                    major.setScore(students.get(i).getScore());
                 }
             }
         }
+        for (university_major major :majors){
+            System.out.println(major.getScore()+" "+major.getStudentnum());
+        }
+        return majors;
     }
 }

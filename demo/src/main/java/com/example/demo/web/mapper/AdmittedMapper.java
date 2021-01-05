@@ -12,11 +12,11 @@ import java.util.List;
 
 @Mapper
 public interface AdmittedMapper {
-    @Update("update students set universityandmajor=#{universityandmajor} where id=#{id}")
+    @Update("update students set universityandmajor=#{0} where id=#{1}")
     public void updateAdmitted(int universityandmajor, int id);
 
     @Select("select * from university_major")
     public List<university_major> admitted();
-    @Select("select * from students where undergrate1=#{major} and universityandmajor is null")
+    @Select("select * from students where undergraduate1=#{major} and universityandmajor is null")
     public List<Student> undergrate1(int major);
 }
