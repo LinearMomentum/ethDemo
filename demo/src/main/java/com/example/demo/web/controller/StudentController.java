@@ -29,6 +29,8 @@ public class StudentController {
     public String insertStudent(Student student) throws NoSuchAlgorithmException {
         int i=(int)(Math.random()*100000);
         String s=Encryption.encryptPassword(String.valueOf(i)).substring(0,12);
+//        student.setEthaccount();
+//        student.setEthpassword();
         student.setPassword(Encryption.encryptPassword(s));
         studentMapper.inserStudent(student);
         return s;
