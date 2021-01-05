@@ -26,7 +26,7 @@ public class AdmittedController {
         admittedMapper.updateAdmitted(universityandmajor,id);
     }
     @GetMapping("/admitted")
-    public List<university_major> admitted(){
+    public List<university_major> admitted() throws Exception {
         List<university_major> majors=admittedMapper.admitted();
         LinkedList<university_major> majors1= new LinkedList(majors) ;
         for(university_major major:majors){
@@ -38,10 +38,17 @@ public class AdmittedController {
             if (students.size()<=major.getStudentnum()){
                 major.setStudentnum(studentNumber-students.size());
                 major.setScore(students.get(students.size()-1).getScore());
+                for (Student student : students){
+                    if (student.getUniversityandmajor()==0){
+                        transactionServeice.volunteer(BigInteger.valueOf(major.getId()),student.getEthaccount());
+                        admittedMapper.updateAdmitted(major.getId(),student.getId());
+                    }
+                }
             }
             else {
                 major.setStudentnum(0);
                 for (int i = 0; i <studentNumber ; i++) {
+                    transactionServeice.volunteer(BigInteger.valueOf(major.getId()),students.get(i).getEthaccount());
                     admittedMapper.updateAdmitted(major.getId(),students.get(i).getId());
                     major.setScore(students.get(i).getScore());
                 }
