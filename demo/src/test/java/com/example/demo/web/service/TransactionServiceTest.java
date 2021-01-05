@@ -23,6 +23,15 @@ public class TransactionServiceTest {
     }
 
     @Test
+    public void RecordTest() throws Exception {
+//        transactionServeice.recordDeploy();
+        String value = "200";
+        transactionServeice.addRecord("0xb7f00eE5026e79709EA680CF63B83BACf6a0A2A6", value);
+        String res = transactionServeice.queryId("0xb7f00eE5026e79709EA680CF63B83BACf6a0A2A6");
+        assertEquals(value, res);
+    }
+
+    @Test
     public void majorTest() throws Exception {
         long var1 = 1, var2 = 2, var3 = 3, var4 = 4, var5 = 5;
         transactionServeice.addMajor(BigInteger.valueOf(var1),BigInteger.valueOf(var2),BigInteger.valueOf(var3),BigInteger.valueOf(var4),BigInteger.valueOf(var5));
