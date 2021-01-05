@@ -2,8 +2,10 @@ package com.example.demo.web.tables;
 
 public class Examinstitute {
     private int id;
-    private int ethaccount;
-
+    private String ethaccount;
+    private String ethpassword;
+    private String systemaccount;
+    private String systempassword;
     public int getId() {
         return id;
     }
@@ -12,11 +14,35 @@ public class Examinstitute {
         this.id = id;
     }
 
-    public int getEthaccount() {
+    public String getEthpassword() {
+        return ethpassword;
+    }
+
+    public void setEthpassword(String ethpassword) {
+        this.ethpassword = ethpassword;
+    }
+
+    public String getSystemaccount() {
+        return systemaccount;
+    }
+
+    public void setSystemaccount(String systemaccount) {
+        this.systemaccount = systemaccount;
+    }
+
+    public String getSystempassword() {
+        return systempassword;
+    }
+
+    public void setSystempassword(String systempassword) {
+        this.systempassword = systempassword;
+    }
+
+    public String getEthaccount() {
         return ethaccount;
     }
 
-    public void setEthaccount(int ethaccount) {
+    public void setEthaccount(String ethaccount) {
         this.ethaccount = ethaccount;
     }
 }

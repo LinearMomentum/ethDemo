@@ -6,9 +6,6 @@ public class Student {
     private String name;
     private String idcard;
     private String ethaccount;
-    private String advance1;
-    private String advance2;
-    private String advance3;
     private String undergraduate1;
     private String undergraduate2;
     private String undergraduate3;
@@ -16,6 +13,17 @@ public class Student {
     private String undergraduate5;
     private String undergraduate6;
     private String password;
+
+    public int getUniversityandmajor() {
+        return universityandmajor;
+    }
+
+    public void setUniversityandmajor(int universityandmajor) {
+        this.universityandmajor = universityandmajor;
+    }
+
+    private int universityandmajor;
+    private String ethpassword;
     private int score;
     public int getScore() {
         return score;
@@ -54,30 +62,6 @@ public class Student {
 
     public void setEthaccount(String ethaccount) {
         this.ethaccount = ethaccount;
-    }
-
-    public String getAdvance1() {
-        return advance1;
-    }
-
-    public void setAdvance1(String advance1) {
-        this.advance1 = advance1;
-    }
-
-    public String getAdvance2() {
-        return advance2;
-    }
-
-    public void setAdvance2(String advance2) {
-        this.advance2 = advance2;
-    }
-
-    public String getAdvance3() {
-        return advance3;
-    }
-
-    public void setAdvance3(String advance3) {
-        this.advance3 = advance3;
     }
 
     public String getUndergraduate1() {
