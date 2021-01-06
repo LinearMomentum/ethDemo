@@ -9,5 +9,5 @@ import org.apache.ibatis.annotations.Update;
 public interface UniversityMapper {
 
     @Insert("insert into university(name,idcode,ethaccount,quota) values (#{name},#{idcode},#{ethaccount},#{quota})")
-    public University insertUniversity(University university);
+    public void insertUniversity(University university);
 }
