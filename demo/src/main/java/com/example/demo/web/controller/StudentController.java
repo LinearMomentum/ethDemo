@@ -70,7 +70,7 @@ public class StudentController {
         System.out.println(idcard);
         System.out.println(password);
         password=Encryption.encryptPassword(password);
-        System.out.println(studentMapper.login(idcard).getPassword().equals(password));
+       // System.out.println(studentMapper.login(idcard).getPassword().equals(password));
         Student student=studentMapper.getStudentByIdCard(idcard);
         if (student!=null){
             if(studentMapper.login(idcard).getPassword().equals(password))
@@ -84,7 +84,7 @@ public class StudentController {
         }
         Examinstitute examinstitute=addMapper.getExaminstitute(idcard);
         if (examinstitute!=null){
-            if (examinstitute.getEthpassword().equals(password))
+            if (examinstitute.getSystempassword().equals(password))
                 return examinstitute;
         }
         return null;

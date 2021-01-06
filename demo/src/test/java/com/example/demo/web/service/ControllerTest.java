@@ -17,4 +17,5 @@ public class ControllerTest {
         StudentController studentController=new StudentController();
         System.out.println(studentController.getScore("8"));
     }
+
 }

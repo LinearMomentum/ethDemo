@@ -23,10 +23,10 @@ public interface AdmittedMapper {
 
     @Update("update universityandmajor set studentnum=#{0} where id=#{1}")
     public void updateUniversityAndMajor(int studentnum,int id);
-    @Select("select * from students where systemaccount=#{systemaccount}")
+    @Select("select * from examinstitute where systemaccount=#{systemaccount}")
     public Examinstitute getExaminstitute(String systemaccount);
 
-    @Insert("insert into exam(ethaccount,systemaccount,systempassword,ethpassword) values (#{ethaccount},#{systemaccount},#{systempassword},#{ethpassword})")
+    @Insert("insert into examinstitute(ethaccount,systemaccount,systempassword,ethpassword) values (#{ethaccount},#{systemaccount},#{systempassword},#{ethpassword})")
     public void insertExam(Examinstitute examinstitute);
 
 }

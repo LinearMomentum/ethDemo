@@ -32,7 +32,7 @@ public class AdmittedController {
     public void updateAdmitted(@RequestParam int universityandmajor,@RequestParam int id){
         admittedMapper.updateAdmitted(universityandmajor,id);
     }
-    @GetMapping("Institute/insert")
+    @GetMapping("institute/insert")
     public void insertInstitute(Examinstitute examinstitute) throws NoSuchAlgorithmException, InvalidAlgorithmParameterException, CipherException, NoSuchProviderException {
         examinstitute.setSystempassword(Encryption.encryptPassword(examinstitute.getSystempassword()));
         examinstitute.setIdentify(2);
