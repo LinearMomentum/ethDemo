@@ -13,6 +13,7 @@ import org.web3j.crypto.CipherException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
+import java.util.List;
 
 @RestController
 public class UniversityController {
@@ -27,5 +28,8 @@ public class UniversityController {
         university.setIdentify(1);
         universityMapper.insertUniversity(university);
     }
-
+    @GetMapping("/university/get")
+    public List<University> getUniversities(){
+        return universityMapper.getUniversities();
+    }
 }

@@ -14,6 +14,42 @@ public class Student extends User{
     private String undergraduate6;
     private String password;
     private String ethpassword;
+    private int math;
+    private int integration;
+    private int chinese;
+    private int english;
+
+    public int getMath() {
+        return math;
+    }
+
+    public void setMath(int math) {
+        this.math = math;
+    }
+
+    public int getIntegration() {
+        return integration;
+    }
+
+    public void setIntegration(int integration) {
+        this.integration = integration;
+    }
+
+    public int getChinese() {
+        return chinese;
+    }
+
+    public void setChinese(int chinese) {
+        this.chinese = chinese;
+    }
+
+    public int getEnglish() {
+        return english;
+    }
+
+    public void setEnglish(int english) {
+        this.english = english;
+    }
 
     public Student() {
         setIdentify(0);

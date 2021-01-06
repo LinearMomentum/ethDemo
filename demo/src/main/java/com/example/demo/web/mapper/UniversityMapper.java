@@ -6,13 +6,19 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import java.util.List;
+
 @Mapper
 public interface UniversityMapper {
 
-    @Insert("insert into university(idcode,ethpassword,systemaccount,systempassword,ethaccount,quota) " +
-            "values (#{idcode},#{ethpassword},#{systemaccount},#{systempassword},#{ethaccount},#{quota})")
+    @Insert("insert into university(name,idcode,ethpassword,systemaccount,systempassword,ethaccount,quota) " +
+            "values (#{name},#{idcode},#{ethpassword},#{systemaccount},#{systempassword},#{ethaccount},#{quota})")
     public void insertUniversity(University university);
 
     @Select("select * from university where systemaccount=#{systemaccount}")
     public University getUniversity(String systemaccount);
+
+    @Select("select * from university")
+    public List<University> getUniversities();
+
 }
