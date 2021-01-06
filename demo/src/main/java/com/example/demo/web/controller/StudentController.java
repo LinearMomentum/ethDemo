@@ -4,6 +4,8 @@ import com.example.demo.web.Encryption;
 import com.example.demo.web.mapper.StudentMapper;
 import com.example.demo.web.service.TransactionServeice;
 import com.example.demo.web.tables.Student;
+import com.example.demo.web.tables.University;
+import com.example.demo.web.tables.User;
 import com.example.demo.web.util.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -55,14 +57,21 @@ public class StudentController {
     public void updatePassword(Student student){
         studentMapper.updatePassword(student);
     }
-    @GetMapping("/student/login")
-    public int login(@RequestParam String idcard,@RequestParam String password) throws NoSuchAlgorithmException {
+    @GetMapping("/login")
+    public User login(@RequestParam String idcard, @RequestParam String password) throws NoSuchAlgorithmException {
         System.out.println(idcard);
         System.out.println(password);
         password=Encryption.encryptPassword(password);
         System.out.println(studentMapper.login(idcard).getPassword().equals(password));
-        if(studentMapper.login(idcard).getPassword().equals(password))
-            return 1;
+        Student student=studentMapper.getStudentByIdCard(idcard);
+        if (student!=null){
+            if(studentMapper.login(idcard).getPassword().equals(password))
+                return student;
+            return null;
+        }
+        University university=
+        if ()
+
         return 0;
     }
 

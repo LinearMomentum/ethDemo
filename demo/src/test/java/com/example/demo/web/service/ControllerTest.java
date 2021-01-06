@@ -12,4 +12,9 @@ public class ControllerTest {
         StudentController studentController = new StudentController();
         studentController.login("8","8");
     }
+    @Test
+    public void test2() throws Exception {
+        StudentController studentController=new StudentController();
+        System.out.println(studentController.getScore("8"));
+    }
 }

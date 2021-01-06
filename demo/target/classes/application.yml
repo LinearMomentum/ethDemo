@@ -12,6 +12,7 @@ spring:
 
 server:
   port: ${PORT:8090}
+  max-http-header-size: 40960
 web3j:
   #  client-address: http://10.20.36.229:8545
   client-address: http://127.0.0.1:7545

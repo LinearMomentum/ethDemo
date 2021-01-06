@@ -1,7 +1,7 @@
 package com.example.demo.web.tables;
 
 
-public class Student {
+public class Student extends User{
     private int id;
     private String name;
     private String idcard;
