@@ -21,6 +21,6 @@ public interface StudentMapper {
     @Update("update students set state=1 where idcard=#{idcard}")
     public void updateState(String idcard);
 
-    @Update("update students set undergraduate1=#{undergraduate1} where idcard=#{idcard}")
+    @Update("update students set undergraduate1=#{0} where idcard=#{1}")
     public void saveMajor(int undergraduate1,String idcard);
 }

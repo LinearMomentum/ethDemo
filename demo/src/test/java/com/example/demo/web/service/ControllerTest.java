@@ -15,7 +15,8 @@ public class ControllerTest {
     @Test
     public void test2() throws Exception {
         StudentController studentController=new StudentController();
-        System.out.println(studentController.getScore("8"));
+
     }
+
 
 }

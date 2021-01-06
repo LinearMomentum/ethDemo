@@ -1,5 +1,6 @@
 package com.example.demo.web.mapper;
 
+import com.example.demo.web.tables.Student;
 import com.example.demo.web.tables.University;
 import com.example.demo.web.tables.university_major;
 import org.apache.ibatis.annotations.Insert;
@@ -28,7 +29,7 @@ public interface UniversityMapper {
     @Select("select code from major where name=#{name}")
     public int getMajorIdByName(String name);
 
-    @Select("select id from university_major where universityid=#{universityid} and majorid=#{majorid}")
+    @Select("select id from university_major where universityid=#{0} and majorid=#{1}")
     public university_major getUniversityAndMajor(String universityid,int majorid);
 
     @Select("select * from university_major where id=#{id}")
@@ -40,7 +41,13 @@ public interface UniversityMapper {
     @Select("select * from university where idcode=#{idcode}")
     public University getUniversityByIdCode(String idcode);
 
-    @Select("select majorid from university_major where universityid=#{universityid}")
+    @Select("select majorid from university_major where universityid=#{0}")
     public List<Integer> getMajorsByUniversity(String universityid);
+
+    @Select("select * from students where undergraduate1=#{0}")
+    public List<Student> getStudentsByUniversity(int undergraduate1);
+
+    @Select("select * from university_major where universityid=#{0}")
+    public List<university_major> getMajorsByUniversityId(String universityid);
 
 }

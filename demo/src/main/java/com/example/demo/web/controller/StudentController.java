@@ -30,6 +30,7 @@ public class StudentController {
     private TransactionServeice transactionServeice;
     @GetMapping("/student")
     public Student getStudent(@RequestParam String idcard){
+        System.out.println(idcard+"  sssss");
 
         Student student= studentMapper.getStudentByIdCard(idcard);
         if (student.getUndergraduate1()!=0){
@@ -41,6 +42,11 @@ public class StudentController {
         return student;
 
     }
+//    @GetMapping("/student/name")
+//    public String getStudentName(@){
+//
+//    }
+
     @GetMapping("/student/score")
     public int getScore(@RequestParam String idcard) throws Exception {
         Student student=studentMapper.getStudentByIdCard(idcard);
@@ -50,8 +56,10 @@ public class StudentController {
     @GetMapping("/student/submit")
     public void submitMajor(@RequestParam String idcard,@RequestParam String idcode,@RequestParam String name){
         //interface
-        saveMajor(idcard,idcode,name);
+
         studentMapper.updateState(idcard);
+        saveMajor(idcard,idcode,name);
+
     }
     @GetMapping("student/save")
     public void saveMajor(@RequestParam String idcard,@RequestParam String idcode,@RequestParam String name){
