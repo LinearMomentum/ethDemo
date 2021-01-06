@@ -6,6 +6,10 @@ public class University extends User{
     private String idcode;
     private String ethaccount;
 
+    public University() {
+        setIdentify(1);
+    }
+
     public int getId() {
         return id;
     }

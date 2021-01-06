@@ -15,6 +15,10 @@ public class Student extends User{
     private String password;
     private String ethpassword;
 
+    public Student() {
+        setIdentify(0);
+    }
+
     public String getEthpassword() {
         return ethpassword;
     }

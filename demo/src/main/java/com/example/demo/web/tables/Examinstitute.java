@@ -6,6 +6,11 @@ public class Examinstitute extends User{
     private String ethpassword;
     private String systemaccount;
     private String systempassword;
+
+    public Examinstitute() {
+        setIdentify(2);
+    }
+
     public int getId() {
         return id;
     }
