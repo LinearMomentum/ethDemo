@@ -18,6 +18,15 @@ public class Student extends User{
     private int integration;
     private int chinese;
     private int english;
+    private int state;
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
 
     public int getMath() {
         return math;

@@ -5,10 +5,7 @@ import com.example.demo.web.mapper.AdmittedMapper;
 import com.example.demo.web.mapper.StudentMapper;
 import com.example.demo.web.mapper.UniversityMapper;
 import com.example.demo.web.service.TransactionServeice;
-import com.example.demo.web.tables.Examinstitute;
-import com.example.demo.web.tables.Student;
-import com.example.demo.web.tables.University;
-import com.example.demo.web.tables.User;
+import com.example.demo.web.tables.*;
 import com.example.demo.web.util.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -42,10 +39,18 @@ public class StudentController {
         BigInteger bigInteger=transactionServeice.queryScore(student.getEthaccount());
         return bigInteger.intValue();
     }
-    @PostMapping("/student/save")
-    public void saveMajor(@RequestParam String idcard,@RequestParam String password){
+    @GetMapping("/student/submit")
+    public void submitMajor(@RequestParam String idcard,@RequestParam String idcode,@RequestParam String name){
         //interface
-
+        saveMajor(idcard,idcode,name);
+        studentMapper.updateState(idcard);
+    }
+    @GetMapping("student/save")
+    public void saveMajor(@RequestParam String idcard,@RequestParam String idcode,@RequestParam String name){
+        University university= UniMapper.getUniversityById(idcode);
+        int majorId=UniMapper.getMajorIdByName(name);
+        university_major university_major=UniMapper.getUniversityAndMajor(university.getIdcode(),majorId);
+        studentMapper.saveMajor(university_major.getId(),idcard);
     }
     @GetMapping("/student/insert")
     public Student insertStudent(Student student) throws Exception {

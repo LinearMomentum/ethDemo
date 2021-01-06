@@ -18,4 +18,9 @@ public interface StudentMapper {
 
     @Select("select * from students where idcard=#{idcard}")
     public Student login(String idcard);
+    @Update("update students set state=1 where idcard=#{idcard}")
+    public void updateState(String idcard);
+
+    @Update("update students set undergraduate1=#{undergraduate1} where idcard=#{idcard}")
+    public void saveMajor(int undergraduate1,String idcard);
 }
