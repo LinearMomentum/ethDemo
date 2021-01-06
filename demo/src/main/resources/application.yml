@@ -7,8 +7,13 @@ spring:
     url: jdbc:postgresql://localhost:5432/postgres
     driver-class-name: org.postgresql.Driver
     type: com.alibaba.druid.pool.DruidDataSource
-
     initalSize: 5
+  servlet:
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 500MB
+
+
 
 server:
   port: ${PORT:8090}
