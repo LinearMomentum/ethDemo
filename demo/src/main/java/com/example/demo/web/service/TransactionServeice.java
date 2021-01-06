@@ -1,9 +1,6 @@
 package com.example.demo.web.service;
 
-import com.example.demo.web.contract.Helloworld;
-import com.example.demo.web.contract.Matriculate;
-import com.example.demo.web.contract.Scores;
-import com.example.demo.web.contract.Scores_sol_Scores2;
+import com.example.demo.web.contract.*;
 import com.example.demo.web.model.BlockchainTransaction;
 import com.example.demo.web.util.CredentialsGen;
 import org.slf4j.Logger;
@@ -16,6 +13,7 @@ import org.web3j.protocol.Web3j;
 import org.web3j.protocol.admin.Admin;
 import org.web3j.protocol.admin.methods.response.PersonalUnlockAccount;
 import org.web3j.protocol.core.DefaultBlockParameterName;
+import org.web3j.protocol.core.RemoteFunctionCall;
 import org.web3j.protocol.core.methods.request.Transaction;
 import org.web3j.protocol.core.methods.response.*;
 import org.web3j.protocol.http.HttpService;
@@ -41,6 +39,7 @@ public class TransactionServeice {
 //    String contractAddress2 = "0x12180cF141b3B57B5c878D46cA531dEa27C6FBD5";
     String scoresContractAddress = "0x7bb75f83cc04fe0f86de7f725841c854631f49d7";
     String matriculateContractAddress = "0x11b212cd9805ea4ed4a4d73584482c96f5294392";
+    String recordContractAddress = "0xda3b85e81cc5dcc9cf9bd2c81ba00c1821a1e4ac";
 
 
 
@@ -238,6 +237,45 @@ public class TransactionServeice {
                 BigInteger.valueOf(6721975L)));
         return matriculate.matriculatedMajor(addr).send();
     }
+
+
+    public void recordDeploy() throws Exception {
+        Credentials credentials = CredentialsGen.getCredentialsFromPrivateKey();
+
+        String contractAddress = Record.deploy(web3j, credentials, new StaticGasProvider(BigInteger.valueOf(20000000000L),
+                BigInteger.valueOf(6721975L))).send().getContractAddress();
+        this.recordContractAddress = contractAddress;
+
+        System.out.println("record contract address:" + contractAddress);
+    }
+
+    public void addRecord(String addr, String id) throws Exception {
+        Credentials credentials = CredentialsGen.getCredentialsFromPrivateKey();
+
+        Record record = Record.load(this.recordContractAddress, web3j, credentials, new StaticGasProvider(BigInteger.valueOf(20000000000L),
+                BigInteger.valueOf(6721975L)));
+        record.addRecord(addr, id).send();
+    }
+
+    public String queryAddr(String id) throws Exception {
+        Credentials credentials = CredentialsGen.getCredentialsFromPrivateKey();
+
+        Record record = Record.load(this.recordContractAddress, web3j, credentials, new StaticGasProvider(BigInteger.valueOf(20000000000L),
+                BigInteger.valueOf(6721975L)));
+        return record.queryAddr(id).send();
+    }
+
+    public String queryId(String addr) throws Exception {
+        Credentials credentials = CredentialsGen.getCredentialsFromPrivateKey();
+
+        Record record = Record.load(this.recordContractAddress, web3j, credentials, new StaticGasProvider(BigInteger.valueOf(20000000000L),
+                BigInteger.valueOf(6721975L)));
+        return record.queryId(addr).send();
+    }
+
+    
+    
+    
 
 
 
