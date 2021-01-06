@@ -47,6 +47,7 @@ public class StudentController {
         student.setEthpassword(account.getPrivateKey());
         transactionServeice.addScore(student.getEthaccount(), BigInteger.valueOf(student.getScore()));
         student.setPassword(Encryption.encryptPassword(student.getPassword()));
+        transactionServeice.addRecord(student.getEthaccount(),student.getIdcard());
         studentMapper.inserStudent(student);
         return student;
     }
@@ -55,10 +56,14 @@ public class StudentController {
         studentMapper.updatePassword(student);
     }
     @GetMapping("/student/login")
-    public boolean login(@RequestParam String idcard,@RequestParam String password) throws NoSuchAlgorithmException {
+    public int login(@RequestParam String idcard,@RequestParam String password) throws NoSuchAlgorithmException {
+        System.out.println(idcard);
+        System.out.println(password);
         password=Encryption.encryptPassword(password);
         System.out.println(studentMapper.login(idcard).getPassword().equals(password));
-        return studentMapper.login(idcard).getPassword().equals(password);
+        if(studentMapper.login(idcard).getPassword().equals(password))
+            return 1;
+        return 0;
     }
 
 }

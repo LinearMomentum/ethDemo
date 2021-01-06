@@ -37,9 +37,9 @@ public class TransactionServeice {
     private final Web3j web3j;
     String contractAddress = "0x136612E549715CFC2583f80c995d06F6BACEa968";
 //    String contractAddress2 = "0x12180cF141b3B57B5c878D46cA531dEa27C6FBD5";
-    String scoresContractAddress = "0x7bb75f83cc04fe0f86de7f725841c854631f49d7";
-    String matriculateContractAddress = "0x11b212cd9805ea4ed4a4d73584482c96f5294392";
-    String recordContractAddress = "0xda3b85e81cc5dcc9cf9bd2c81ba00c1821a1e4ac";
+    String scoresContractAddress = "0x4280e89f0e37183f2d5beb6ab2d73127ff7ead66";
+    String matriculateContractAddress = "0xf297499aa20795349792d3f8e91f98b8263de1af";
+    String recordContractAddress = "0x202b200e836c60a2204b5f014b0043fb286d4d69";
 
 
 

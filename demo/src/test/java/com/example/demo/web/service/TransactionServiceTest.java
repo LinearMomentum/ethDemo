@@ -18,6 +18,7 @@ public class TransactionServiceTest {
     public void deploy() throws Exception {
         transactionServeice.matriculateDeploy();
         transactionServeice.scoresDeploy();
+        transactionServeice.recordDeploy();
     }
 
     @Test
@@ -72,30 +73,30 @@ public class TransactionServiceTest {
 
     }
 
-    @Test
-    public void matriculateTest2() throws Exception {
-        long value = 100;
-        long var1 = 2, var2 = 2, var3 = 3, var4 = 2, var5 = 101;
-        transactionServeice.addMajor(BigInteger.valueOf(var1),BigInteger.valueOf(var2),BigInteger.valueOf(var3),BigInteger.valueOf(var4),BigInteger.valueOf(var5));
-        transactionServeice.addScore("0xb7f00eE5026e79709EA680CF63B83BACf6a0A2A6", BigInteger.valueOf(value));
-        transactionServeice.addScore("0x4AADa8c53baB34731c7c9F4906A77BD3789c0FbE", BigInteger.valueOf(value+1));
-        transactionServeice.addScore("0x181dF4b253C410Cc2cF85FdfD611954043322b22", BigInteger.valueOf(value+2));
-
-        transactionServeice.volunteer(BigInteger.valueOf(var1),"0xb7f00eE5026e79709EA680CF63B83BACf6a0A2A6");
-        transactionServeice.volunteer(BigInteger.valueOf(var1),"0x4AADa8c53baB34731c7c9F4906A77BD3789c0FbE");
-        transactionServeice.volunteer(BigInteger.valueOf(var1),"0x181dF4b253C410Cc2cF85FdfD611954043322b22");
-
-        transactionServeice.matriculate();
-        List<String> list = transactionServeice.matriculatedList(BigInteger.valueOf(var1));
-        for(String i:list){
-            System.out.println(i);
-//            System.out.println(list.get(2));
-        }
-
-
-
-
-    }
+//    @Test
+//    public void matriculateTest2() throws Exception {
+//        long value = 100;
+//        long var1 = 2, var2 = 2, var3 = 3, var4 = 2, var5 = 101;
+//        transactionServeice.addMajor(BigInteger.valueOf(var1),BigInteger.valueOf(var2),BigInteger.valueOf(var3),BigInteger.valueOf(var4),BigInteger.valueOf(var5));
+//        transactionServeice.addScore("0xb7f00eE5026e79709EA680CF63B83BACf6a0A2A6", BigInteger.valueOf(value));
+//        transactionServeice.addScore("0x4AADa8c53baB34731c7c9F4906A77BD3789c0FbE", BigInteger.valueOf(value+1));
+//        transactionServeice.addScore("0x181dF4b253C410Cc2cF85FdfD611954043322b22", BigInteger.valueOf(value+2));
+//
+//        transactionServeice.volunteer(BigInteger.valueOf(var1),"0xb7f00eE5026e79709EA680CF63B83BACf6a0A2A6");
+//        transactionServeice.volunteer(BigInteger.valueOf(var1),"0x4AADa8c53baB34731c7c9F4906A77BD3789c0FbE");
+//        transactionServeice.volunteer(BigInteger.valueOf(var1),"0x181dF4b253C410Cc2cF85FdfD611954043322b22");
+//
+//        transactionServeice.matriculate();
+//        List<String> list = transactionServeice.matriculatedList(BigInteger.valueOf(var1));
+//        for(String i:list){
+//            System.out.println(i);
+////            System.out.println(list.get(2));
+//        }
+//
+//
+//
+//
+//    }
 
     @Test
     public void test() throws Exception {
