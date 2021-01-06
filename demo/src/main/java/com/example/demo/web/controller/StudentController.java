@@ -27,6 +27,12 @@ public class StudentController {
         return studentMapper.getStudentByIdCard(idcard);
 
     }
+    @GetMapping("/student/score")
+    public int getScore(@RequestParam String idcard) throws Exception {
+        Student student=studentMapper.getStudentByIdCard(idcard);
+        BigInteger bigInteger=transactionServeice.queryScore(student.getEthaccount());
+        return bigInteger.intValue();
+    }
     @PostMapping("/student/save")
     public void saveMajor(@RequestParam String idcard,@RequestParam String password){
         //interface
