@@ -76,7 +76,7 @@ public class AdmittedController {
             System.out.println(major.getScore()+" "+major.getStudentnum());
             admittedMapper.updateUniversityAndMajor(major.getStudentnum(),major.getId());
             try {
-                transactionServeice.addMajor(BigInteger.valueOf(major.getId()), BigInteger.valueOf(major.getUniversityid()), BigInteger.valueOf(major.getMajorid()), BigInteger.valueOf(majors1.get(i).getStudentnum()), BigInteger.valueOf(major.getScore()));
+                transactionServeice.addMajor(BigInteger.valueOf(major.getId()), BigInteger.valueOf(Long.parseLong(major.getUniversityid())), BigInteger.valueOf(major.getMajorid()), BigInteger.valueOf(majors1.get(i).getStudentnum()), BigInteger.valueOf(major.getScore()));
             } catch (Exception e) {
                 e.printStackTrace();
             }
