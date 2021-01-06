@@ -1,5 +1,8 @@
 package com.example.demo.web.tables;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class University extends User{
     private int id;
     private String name;
@@ -7,6 +10,15 @@ public class University extends User{
     private String ethaccount;
     private String systemaccount;
     private String systempassword;
+    private ArrayList<String> major=new ArrayList<>();
+
+    public ArrayList<String> getMajor() {
+        return major;
+    }
+
+    public void setMajor(ArrayList<String> major) {
+        this.major = major;
+    }
 
     public String getEthpassword() {
         return ethpassword;

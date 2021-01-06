@@ -19,12 +19,12 @@ public class Student extends User{
     private int chinese;
     private int english;
 
-    public String getUniversityName() {
-        return universityName;
+    public University getUniversity() {
+        return university;
     }
 
-    public void setUniversityName(String universityName) {
-        this.universityName = universityName;
+    public void setUniversity(University university) {
+        this.university = university;
     }
 
     public String getMajorName() {
@@ -36,7 +36,7 @@ public class Student extends User{
     }
 
     private int state;
-    private String universityName;
+    private University university;
     private String majorName;
     public int getState() {
         return state;

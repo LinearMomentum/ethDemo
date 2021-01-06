@@ -36,4 +36,11 @@ public interface UniversityMapper {
 
     @Select("select name from major where code=#{code}")
     public String getMajorNameByCode(int code);
+
+    @Select("select * from university where idcode=#{idcode}")
+    public University getUniversityByIdCode(String idcode);
+
+    @Select("select majorid from university_major where universityid=#{universityid}")
+    public List<Integer> getMajorsByUniversity(String universityid);
+
 }

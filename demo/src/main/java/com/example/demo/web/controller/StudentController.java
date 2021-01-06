@@ -36,7 +36,7 @@ public class StudentController {
         university_major university_major=UniMapper.getUniversityAndMajorById(student.getUndergraduate1());
         University university=UniMapper.getUniversityById(university_major.getUniversityid());
         String majorName=UniMapper.getMajorNameByCode(university_major.getMajorid());
-        student.setUniversityName(university.getName());
+        student.setUniversity(university);
         student.setMajorName(majorName);}
         return student;
 
