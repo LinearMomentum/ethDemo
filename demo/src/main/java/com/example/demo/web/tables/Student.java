@@ -1,7 +1,7 @@
 package com.example.demo.web.tables;
 
 
-public class Student {
+public class Student extends User{
     private int id;
     private String name;
     private String idcard;
@@ -14,6 +14,10 @@ public class Student {
     private String undergraduate6;
     private String password;
     private String ethpassword;
+
+    public Student() {
+        setIdentify(0);
+    }
 
     public String getEthpassword() {
         return ethpassword;

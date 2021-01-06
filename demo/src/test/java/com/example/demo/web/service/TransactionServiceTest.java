@@ -24,7 +24,6 @@ public class TransactionServiceTest {
     @Test
     public void scoreTest() throws Exception {
         int value = 200;
-
         transactionServeice.addScore("0xb7f00eE5026e79709EA680CF63B83BACf6a0A2A6", BigInteger.valueOf(value));
         int res = transactionServeice.queryScore("0xb7f00eE5026e79709EA680CF63B83BACf6a0A2A6").intValue();
         assertEquals(value, res);

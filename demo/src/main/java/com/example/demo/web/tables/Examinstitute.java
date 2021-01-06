@@ -1,11 +1,16 @@
 package com.example.demo.web.tables;
 
-public class Examinstitute {
+public class Examinstitute extends User{
     private int id;
     private String ethaccount;
     private String ethpassword;
     private String systemaccount;
     private String systempassword;
+
+    public Examinstitute() {
+        setIdentify(2);
+    }
+
     public int getId() {
         return id;
     }
