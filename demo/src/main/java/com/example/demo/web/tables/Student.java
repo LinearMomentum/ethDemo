@@ -6,7 +6,7 @@ public class Student extends User{
     private String name;
     private String idcard;
     private String ethaccount;
-    private String undergraduate1;
+    private int undergraduate1;
     private String undergraduate2;
     private String undergraduate3;
     private String undergraduate4;
@@ -18,8 +18,26 @@ public class Student extends User{
     private int integration;
     private int chinese;
     private int english;
-    private int state;
 
+    public String getUniversityName() {
+        return universityName;
+    }
+
+    public void setUniversityName(String universityName) {
+        this.universityName = universityName;
+    }
+
+    public String getMajorName() {
+        return majorName;
+    }
+
+    public void setMajorName(String majorName) {
+        this.majorName = majorName;
+    }
+
+    private int state;
+    private String universityName;
+    private String majorName;
     public int getState() {
         return state;
     }
@@ -122,11 +140,11 @@ public class Student extends User{
         this.ethaccount = ethaccount;
     }
 
-    public String getUndergraduate1() {
+    public int getUndergraduate1() {
         return undergraduate1;
     }
 
-    public void setUndergraduate1(String undergraduate1) {
+    public void setUndergraduate1(int undergraduate1) {
         this.undergraduate1 = undergraduate1;
     }
 

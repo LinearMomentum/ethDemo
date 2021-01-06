@@ -2,7 +2,7 @@ package com.example.demo.web.tables;
 
 public class university_major {
     private int id;
-    private int universityid;
+    private String universityid;
     private int majorid;
     private int studentnum;
     private int score;
@@ -15,11 +15,11 @@ public class university_major {
         this.id = id;
     }
 
-    public int getUniversityid() {
+    public String getUniversityid() {
         return universityid;
     }
 
-    public void setUniversityid(int universityid) {
+    public void setUniversityid(String universityid) {
         this.universityid = universityid;
     }
 

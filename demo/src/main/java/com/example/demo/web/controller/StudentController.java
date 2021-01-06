@@ -30,7 +30,14 @@ public class StudentController {
     private TransactionServeice transactionServeice;
     @GetMapping("/student")
     public Student getStudent(@RequestParam String idcard){
-        return studentMapper.getStudentByIdCard(idcard);
+
+        Student student= studentMapper.getStudentByIdCard(idcard);
+        university_major university_major=UniMapper.getUniversityAndMajorById(student.getUndergraduate1());
+        University university=UniMapper.getUniversityById(university_major.getUniversityid());
+        String majorName=UniMapper.getMajorNameByCode(university_major.getMajorid());
+        student.setUniversityName(university.getName());
+        student.setMajorName(majorName);
+        return student;
 
     }
     @GetMapping("/student/score")
@@ -52,6 +59,8 @@ public class StudentController {
         university_major university_major=UniMapper.getUniversityAndMajor(university.getIdcode(),majorId);
         studentMapper.saveMajor(university_major.getId(),idcard);
     }
+
+
     @GetMapping("/student/insert")
     public Student insertStudent(Student student) throws Exception {
         //int i=(int)(Math.random()*100000);

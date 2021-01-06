@@ -13,7 +13,7 @@ public interface StudentMapper {
     @Insert("insert into students(name,idcard,ethaccount,password,score,ethpassword) values (#{name},#{idcard},#{ethaccount},#{password},#{score},#{ethpassword})")
     public void inserStudent(Student student);
 
-    @Update("update students set passowrd=#{password} where id=#{id}")
+    @Update("update students set password=#{password} where id=#{id}")
     public void updatePassword(Student student);
 
     @Select("select * from students where idcard=#{idcard}")
