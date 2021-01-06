@@ -16,6 +16,8 @@ public class UniversityController {
     UniversityMapper universityMapper;
     @GetMapping("/university/insert")
     public University insertUniversity(University university) throws NoSuchAlgorithmException {
+        university.setSystempassword(Encryption.encryptPassword(university.getSystempassword()));
+        university.setIdentify(1);
         universityMapper.insertUniversity(university);
         return university;
     }

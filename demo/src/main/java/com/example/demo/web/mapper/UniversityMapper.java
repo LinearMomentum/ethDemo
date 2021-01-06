@@ -12,5 +12,6 @@ public interface UniversityMapper {
     @Insert("insert into university(name,idcode,ethaccount,quota) values (#{name},#{idcode},#{ethaccount},#{quota})")
     public void insertUniversity(University university);
 
-    @Select("selet * from university where")
+    @Select("selet * from university where where systemaccount=#{systemaccount}")
+    public University getUniversity(String systemaccount);
 }

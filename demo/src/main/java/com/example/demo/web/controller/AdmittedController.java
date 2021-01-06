@@ -1,8 +1,10 @@
 package com.example.demo.web.controller;
 
 
+import com.example.demo.web.Encryption;
 import com.example.demo.web.mapper.AdmittedMapper;
 import com.example.demo.web.service.TransactionServeice;
+import com.example.demo.web.tables.Examinstitute;
 import com.example.demo.web.tables.Student;
 import com.example.demo.web.tables.University;
 import com.example.demo.web.tables.university_major;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.lang.reflect.Array;
 import java.math.BigInteger;
+import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
 @RestController
@@ -21,10 +24,17 @@ public class AdmittedController {
     AdmittedMapper admittedMapper;
     @Autowired
     private TransactionServeice transactionServeice;
-    @GetMapping("/admitted/insert")
-    public void insertAdmitted(@RequestParam int universityandmajor,@RequestParam int id){
+    @GetMapping("/admitted/update")
+    public void updateAdmitted(@RequestParam int universityandmajor,@RequestParam int id){
         admittedMapper.updateAdmitted(universityandmajor,id);
     }
+    @GetMapping("Institute/insert")
+    public void insertInstitute(Examinstitute examinstitute) throws NoSuchAlgorithmException {
+        examinstitute.setSystempassword(Encryption.encryptPassword(examinstitute.getSystempassword()));
+        examinstitute.setIdentify(2);
+
+    }
+
     @GetMapping("/admitted")
     public List<university_major> admitted() throws Exception {
         List<university_major> majors=admittedMapper.admitted();

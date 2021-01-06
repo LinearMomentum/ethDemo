@@ -5,6 +5,24 @@ public class University extends User{
     private String name;
     private String idcode;
     private String ethaccount;
+    private String systemaccount;
+    private String systempassword;
+
+    public String getSystemaccount() {
+        return systemaccount;
+    }
+
+    public void setSystemaccount(String systemaccount) {
+        this.systemaccount = systemaccount;
+    }
+
+    public String getSystempassword() {
+        return systempassword;
+    }
+
+    public void setSystempassword(String systempassword) {
+        this.systempassword = systempassword;
+    }
 
     public University() {
         setIdentify(1);

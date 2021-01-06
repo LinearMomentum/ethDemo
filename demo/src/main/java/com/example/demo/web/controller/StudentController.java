@@ -1,8 +1,11 @@
 package com.example.demo.web.controller;
 
 import com.example.demo.web.Encryption;
+import com.example.demo.web.mapper.AdmittedMapper;
 import com.example.demo.web.mapper.StudentMapper;
+import com.example.demo.web.mapper.UniversityMapper;
 import com.example.demo.web.service.TransactionServeice;
+import com.example.demo.web.tables.Examinstitute;
 import com.example.demo.web.tables.Student;
 import com.example.demo.web.tables.University;
 import com.example.demo.web.tables.User;
@@ -22,6 +25,10 @@ import java.security.NoSuchProviderException;
 public class StudentController {
     @Autowired
     StudentMapper studentMapper;
+    @Autowired
+    UniversityMapper UniMapper;
+    @Autowired
+    AdmittedMapper addMapper;
     @Autowired
     private TransactionServeice transactionServeice;
     @GetMapping("/student")
@@ -50,6 +57,7 @@ public class StudentController {
         transactionServeice.addScore(student.getEthaccount(), BigInteger.valueOf(student.getScore()));
         student.setPassword(Encryption.encryptPassword(student.getPassword()));
         transactionServeice.addRecord(student.getEthaccount(),student.getIdcard());
+        student.setIdentify(0);
         studentMapper.inserStudent(student);
         return student;
     }
@@ -67,12 +75,19 @@ public class StudentController {
         if (student!=null){
             if(studentMapper.login(idcard).getPassword().equals(password))
                 return student;
-            return null;
         }
-        University university=
-        if ()
-
-        return 0;
+        University university=UniMapper.getUniversity(idcard);
+        if (university!=null){
+            if (university.getSystempassword().equals(password)){
+                return university;
+            }
+        }
+        Examinstitute examinstitute=addMapper.getExaminstitute(idcard);
+        if (examinstitute!=null){
+            if (examinstitute.getEthpassword().equals(password))
+                return examinstitute;
+        }
+        return null;
     }
 
 }

@@ -1,5 +1,6 @@
 package com.example.demo.web.mapper;
 
+import com.example.demo.web.tables.Examinstitute;
 import com.example.demo.web.tables.Student;
 import com.example.demo.web.tables.University;
 import com.example.demo.web.tables.university_major;
@@ -22,4 +23,7 @@ public interface AdmittedMapper {
 
     @Update("update universityandmajor set studentnum=#{0} where id=#{1}")
     public void updateUniversityAndMajor(int studentnum,int id);
+    @Select("select * from students where systemaccount=#{systemaccount}")
+    public Examinstitute getExaminstitute(String systemaccount);
+
 }
