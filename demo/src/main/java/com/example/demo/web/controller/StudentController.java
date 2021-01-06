@@ -32,11 +32,12 @@ public class StudentController {
     public Student getStudent(@RequestParam String idcard){
 
         Student student= studentMapper.getStudentByIdCard(idcard);
+        if (student.getUndergraduate1()!=0){
         university_major university_major=UniMapper.getUniversityAndMajorById(student.getUndergraduate1());
         University university=UniMapper.getUniversityById(university_major.getUniversityid());
         String majorName=UniMapper.getMajorNameByCode(university_major.getMajorid());
         student.setUniversityName(university.getName());
-        student.setMajorName(majorName);
+        student.setMajorName(majorName);}
         return student;
 
     }
