@@ -8,6 +8,15 @@ public class University extends User{
     private String systemaccount;
     private String systempassword;
 
+    public String getEthpassword() {
+        return ethpassword;
+    }
+
+    public void setEthpassword(String ethpassword) {
+        this.ethpassword = ethpassword;
+    }
+
+    private String ethpassword;
     public String getSystemaccount() {
         return systemaccount;
     }

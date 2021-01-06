@@ -26,4 +26,7 @@ public interface AdmittedMapper {
     @Select("select * from students where systemaccount=#{systemaccount}")
     public Examinstitute getExaminstitute(String systemaccount);
 
+    @Insert("insert into exam(ethaccount,systemaccount,systempassword,ethpassword) values (#{ethaccount},#{systemaccount},#{systempassword},#{ethpassword})")
+    public void insertExam(Examinstitute examinstitute);
+
 }

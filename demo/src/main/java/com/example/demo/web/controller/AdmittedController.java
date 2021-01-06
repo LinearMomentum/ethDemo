@@ -8,14 +8,18 @@ import com.example.demo.web.tables.Examinstitute;
 import com.example.demo.web.tables.Student;
 import com.example.demo.web.tables.University;
 import com.example.demo.web.tables.university_major;
+import com.example.demo.web.util.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.web3j.crypto.CipherException;
 
 import java.lang.reflect.Array;
 import java.math.BigInteger;
+import java.security.InvalidAlgorithmParameterException;
 import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
 import java.util.*;
 
 @RestController
@@ -29,10 +33,13 @@ public class AdmittedController {
         admittedMapper.updateAdmitted(universityandmajor,id);
     }
     @GetMapping("Institute/insert")
-    public void insertInstitute(Examinstitute examinstitute) throws NoSuchAlgorithmException {
+    public void insertInstitute(Examinstitute examinstitute) throws NoSuchAlgorithmException, InvalidAlgorithmParameterException, CipherException, NoSuchProviderException {
         examinstitute.setSystempassword(Encryption.encryptPassword(examinstitute.getSystempassword()));
         examinstitute.setIdentify(2);
-
+        Account account = Account.createAccount();
+        examinstitute.setEthaccount(account.getAddress());
+        examinstitute.setEthpassword(account.getPrivateKey());
+        admittedMapper.insertExam(examinstitute);
     }
 
     @GetMapping("/admitted")
