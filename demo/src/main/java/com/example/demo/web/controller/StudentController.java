@@ -92,10 +92,11 @@ public class StudentController {
     public User login(@RequestParam String idcard, @RequestParam String password) throws NoSuchAlgorithmException {
         System.out.println(idcard);
         System.out.println(password);
-        password=Encryption.encryptPassword(password);
+//       password=Encryption.encryptPassword(password);
        // System.out.println(studentMapper.login(idcard).getPassword().equals(password));
         Student student=studentMapper.getStudentByIdCard(idcard);
         if (student!=null){
+            password=Encryption.encryptPassword(password);
             if(studentMapper.login(idcard).getPassword().equals(password))
                 return student;
         }
@@ -107,6 +108,7 @@ public class StudentController {
         }
         Examinstitute examinstitute=addMapper.getExaminstitute(idcard);
         if (examinstitute!=null){
+            password=Encryption.encryptPassword(password);
             if (examinstitute.getSystempassword().equals(password))
                 return examinstitute;
         }

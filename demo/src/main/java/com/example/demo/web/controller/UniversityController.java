@@ -46,6 +46,15 @@ public class UniversityController {
         }
         return university;
     }
+    @GetMapping("/university/getMajorsByAccount")
+    public University getMajorsByAccount(@RequestParam String systemaccount){
+        University university=universityMapper.getUniversityByAccount(systemaccount);
+        List<Integer> majors=universityMapper.getMajorsByUniversity(university.getIdcode());
+        for (Integer i:majors){
+            university.getMajor().add(universityMapper.getMajorNameByCode(i));
+        }
+        return university;
+    }
     @GetMapping("/university/getStudents")
     public List<Student> getStudents(@RequestParam String idcode){
         System.out.println("12345");

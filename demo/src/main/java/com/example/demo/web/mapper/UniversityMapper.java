@@ -50,4 +50,7 @@ public interface UniversityMapper {
     @Select("select * from university_major where universityid=#{0}")
     public List<university_major> getMajorsByUniversityId(String universityid);
 
+    @Select("select * from university where systemaccount=#{systemaccount}")
+    public University getUniversityByAccount(String systemaccount);
+
 }

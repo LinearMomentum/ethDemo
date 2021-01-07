@@ -52,7 +52,7 @@ public class AdmittedController {
                 continue;
             List<Student> students=admittedMapper.undergrate1(major.getMajorid());
             students.sort(Comparator.comparing(Student::getScore).reversed());
-            if (students.size()<=major.getStudentnum()){
+            if (students.size()<=major.getStudentnum() && students.size() > 0){
                 major.setStudentnum(studentNumber-students.size());
                 major.setScore(students.get(students.size()-1).getScore());
                 for (Student student : students){
@@ -62,7 +62,7 @@ public class AdmittedController {
                     }
                 }
             }
-            else {
+            else if (students.size()!=0){
                 major.setStudentnum(0);
                 for (int i = 0; i <studentNumber ; i++) {
                     transactionServeice.volunteer(BigInteger.valueOf(major.getId()),students.get(i).getEthaccount());

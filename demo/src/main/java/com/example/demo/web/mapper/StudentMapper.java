@@ -10,7 +10,7 @@ public interface StudentMapper {
     public Student getStudentByIdCard(String idcard);
 
     @Options(useGeneratedKeys = true,keyProperty = "id")
-    @Insert("insert into students(name,idcard,ethaccount,password,score,ethpassword) values (#{name},#{idcard},#{ethaccount},#{password},#{score},#{ethpassword})")
+    @Insert("insert into students(name,idcard,ethaccount,password,score,ethpassword,math,chinese,english,integration) values (#{name},#{idcard},#{ethaccount},#{password},#{score},#{ethpassword},#{math},#{chinese},#{english},#{integration})")
     public void inserStudent(Student student);
 
     @Update("update students set password=#{password} where id=#{id}")
